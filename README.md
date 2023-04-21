@@ -1,1 +1,1 @@
-# SPHsolver2D
+# SPH solver in 2D
