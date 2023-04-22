@@ -21,5 +21,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Shaders\Basic.shader" />
+    <None Include="res\Shaders\ParticleShader.frag" />
+    <None Include="res\Shaders\ParticleShader.vert" />
+    <None Include="res\Shaders\ParticleShader.geom" />
+    <None Include="res\Shaders\Particle.shader" />
   </ItemGroup>
 </Project>

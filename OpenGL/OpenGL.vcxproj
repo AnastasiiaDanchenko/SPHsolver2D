@@ -138,6 +138,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Shaders\Basic.shader" />
+    <None Include="res\Shaders\Particle.shader" />
+    <None Include="res\Shaders\ParticleShader.frag" />
+    <None Include="res\Shaders\ParticleShader.geom" />
+    <None Include="res\Shaders\ParticleShader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
