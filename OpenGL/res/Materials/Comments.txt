@@ -1,0 +1,45 @@
+
+individual colors for debugging 
+av density & pressure over time to show - for each frame 
+png for gener video seq  - or live
+ 
+neigb search kernel = 2h + count particles on  borders or not  - contribution 0 in any case 2.1 or 1.9h
+! rotate and transle the grid and compute neighbors again
+ just quadratic search - n squared
+ data struct to store neighbors
+ try hashing to store particles
+ how to distinguish fluid and boundary neighbors
+ show tests - use dif colors for neighbors or print their number
+ 
+ - next step, then kernel 
+ use quibuc spline for kernel
+ tests only work for inner particles - not edegs - test particles with full neighbors
+ 1.01/h ; kernel correction 1/alpha computed from init state of grid
+ 
+ next step - boundary of 2-3 layers
+ visualize 1 particle falling down on the boundary  -here implement sph accelerations
+ pressure a overcomes gravity on boundaries
+ try to use different time steps, stiffness const and viscosity value
+ on boundary particle can either stay or bounce - both fine
+ bounce no more far than init state, bot x component for this case
+ 
+ test - play with parametres
+ 
+ boundary box & partciles 10x10 - next step
+ after implement analysis - av density over time - goes to final report
+ rotate the box & repeat the simulation
+ implement 2d fluid container
+ 
+ in report:
+ concepts: sph
+ implementation details: neighbor search, visualiz methods, tests
+ analysis: check param time steps, stiffness, average density, viscosity, their dependence on each other, 
+           show adv over grid fluids: box rotation, performance mesurements
+ 
+ write everything in document - paste pictures on each stage
+
+ work with init distance 0.8 or 1.2 and density 900 or 0.9 (depends on metrix) - 
+ don't work with specific numbers as 1
+
+ kernel and kernel gradient 
+ test: sum of kernel 1/h, 0 and 3d look on slides (sum(xi - xj) * kernel gradient)) = -1/h I)

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Particle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Shaders\Basic.shader" />
@@ -142,6 +143,13 @@
     <None Include="res\Shaders\ParticleShader.frag" />
     <None Include="res\Shaders\ParticleShader.geom" />
     <None Include="res\Shaders\ParticleShader.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\CompileShaders.h" />
+    <ClInclude Include="src\GridInit.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\Materials\Comments.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
