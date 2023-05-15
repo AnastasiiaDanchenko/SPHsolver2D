@@ -2,7 +2,7 @@
 #include <GLFW/glfw3.h>
 
 #include "CompileShaders.h"
-#include "GridInit.h"
+#include "NeighbourSearch.h"
 
 #include <string>
 
@@ -45,7 +45,11 @@ int main() {
     grid.resize(GRID_SIZE, std::vector<std::vector<Particle*>>(GRID_SIZE));
 
     InitParticles();
+
     UpdateGrid();
+    RotateGrid(45.0f);
+    TranslateGrid(0.5f, 0.5f);
+
     NeighbourSearch();
 
     ShaderProgramSource source = ParseShader("res/shaders/Particle.shader");
