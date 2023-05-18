@@ -42,4 +42,4 @@ neigb search kernel = 2h + count particles on  borders or not  - contribution 0 
  don't work with specific numbers as 1
 
  kernel and kernel gradient 
- test: sum of kernel 1/h, 0 and 3d look on slides (sum(xi - xj) * kernel gradient)) = -1/h I)
+ test: sum of kernel 1/h, 0 and 3d look on slides (sum(xi - xj) * kernel gradient)) = -1/h * I)

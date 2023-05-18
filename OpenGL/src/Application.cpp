@@ -3,11 +3,16 @@
 
 #include "CompileShaders.h"
 #include "NeighbourSearch.h"
+#include "CubicSplineKernel.h"
 
 #include <string>
 
 const int WINDOW_WIDTH = 1000;
 const int WINDOW_HEIGHT = 800;
+
+const int GRID_SIZE = 10;
+const float SPACING = 2.0f / GRID_SIZE;
+const float SUPPORT = 2.1 * SPACING;
 
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (action == GLFW_PRESS || action == GLFW_REPEAT) {
@@ -44,28 +49,24 @@ int main() {
     // Initialize grid
     grid.resize(GRID_SIZE, std::vector<std::vector<Particle*>>(GRID_SIZE));
 
-    InitParticles();
+    InitParticles(GRID_SIZE, SPACING);
 
-    UpdateGrid();
+    UpdateGrid(GRID_SIZE);
     RotateGrid(45.0f);
     TranslateGrid(0.5f, 0.5f);
 
-    NeighbourSearch();
+    NeighbourSearch(SUPPORT);
+
+    KernelTest(SPACING, GRID_SIZE);
 
     ShaderProgramSource source = ParseShader("res/shaders/Particle.shader");
-    std::cout << "VERTEX" << std::endl;
-    std::cout << source.VertexSource << std::endl;
-    std::cout << "FRAGMENT" << std::endl;
-    std::cout << source.FragmentSource << std::endl;
-    std::cout << "GEOMETRY" << std::endl;
-    std::cout << source.GeometrySource << std::endl;
 
     unsigned int shader = CreateShader(source.VertexSource, source.FragmentSource, source.GeometrySource);
     glUseProgram(shader);
 
     // Main loop
     while (!glfwWindowShouldClose(window)) {
-        UpdateGrid();
+        UpdateGrid(GRID_SIZE);
 
         glClear(GL_COLOR_BUFFER_BIT);
 

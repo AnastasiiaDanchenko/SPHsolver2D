@@ -1,8 +1,6 @@
 #include "NeighbourSearch.h"
 
-const float NEIGHBOR_RADIUS = 0.41f;
-
-void NeighbourSearch() {
+void NeighbourSearch(const float radius) {
 	for (int i = 0; i < particles.size(); i++) {
 		particles[i].neighbors.clear();
 
@@ -11,12 +9,12 @@ void NeighbourSearch() {
 			float dy = particles[j].y - particles[i].y;
 			float distance = std::sqrt(dx * dx + dy * dy);
 
-			if (distance < NEIGHBOR_RADIUS) {
+			if (distance < radius) {
 				particles[i].neighbors.push_back(&particles[j]);
 			}
 		}
 
-		std::cout << "Particle " << i << " has " << particles[i].neighbors.size() << " neighbors. "
-			<< "Position: (" << particles[i].x << ", " << particles[i].y << ")" << std::endl;
+		//std::cout << "Particle " << i << " has " << particles[i].neighbors.size() << " neighbors. "
+		//	<< "Position: (" << particles[i].x << ", " << particles[i].y << ")" << std::endl;
 	}
 }

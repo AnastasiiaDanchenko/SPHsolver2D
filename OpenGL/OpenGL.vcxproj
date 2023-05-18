@@ -77,7 +77,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Dependencies\eigen-3.4.0;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -94,7 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\dev\Dependencies\eigen-3.4.0;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\CubicSplineKernel.cpp" />
     <ClCompile Include="src\GridInit.cpp" />
     <ClCompile Include="src\NeighbourSearch.cpp" />
     <ClCompile Include="src\Particle.cpp" />
@@ -148,8 +149,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CompileShaders.h" />
+    <ClInclude Include="src\CubicSplineKernel.h" />
     <ClInclude Include="src\GridInit.h" />
     <ClInclude Include="src\NeighbourSearch.h" />
+    <ClInclude Include="src\Particle.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\Materials\Comments.txt" />
