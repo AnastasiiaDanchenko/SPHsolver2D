@@ -5,7 +5,6 @@
 #include <cmath>
 
 #include "GridInit.h"
-#include "Particle.h"
 
 float rotationAngle = 45.0f;  // Rotation angle in degrees
 float rotationAngleRad = rotationAngle * M_PI / 180.0f;  // Convert to radians
@@ -16,7 +15,7 @@ std::vector<Particle> particles;
 // Spatial partitioning
 std::vector<std::vector<std::vector<Particle*>>> grid;
 
-void UpdateGrid(const int gridSize) {
+void UpdateGrid() {
     // Clear grid
     for (auto& row : grid) {
         for (auto& col : row) {
@@ -25,10 +24,10 @@ void UpdateGrid(const int gridSize) {
     }
     // Add particles to grid
     for (int i = 0; i < particles.size(); i++) {
-        int x = (particles[i].x + 1.0f) / 2.0f * gridSize;
-        int y = (particles[i].y + 1.0f) / 2.0f * gridSize;
+        int x = (particles[i].x + 1.0f) / 2.0f * GRID_SIZE;
+        int y = (particles[i].y + 1.0f) / 2.0f * GRID_SIZE;
 
-        if (x < 0 || x >= gridSize || y < 0 || y >= gridSize) {
+        if (x < 0 || x >= GRID_SIZE || y < 0 || y >= GRID_SIZE) {
             continue;
         }
 
@@ -36,14 +35,16 @@ void UpdateGrid(const int gridSize) {
     }
 }
 
-void InitParticles(const int numParticles, const float spacing) {
-    particles.clear();
+void InitParticles(int width, int height, bool isFluid) {
+    for (int i = 0; i < width; i++) {
+        for (int j = 0; j < height; j++) {
+            Particle p;
 
-    for (int i = 0; i < numParticles; i++) {
-        for (int j = 0; j < numParticles; j++) {
-            float posX = -1.0f + i * spacing + spacing / 2.0f;
-            float posY = -1.0f + j * spacing + spacing / 2.0f;
-            particles.push_back(Particle(posX, posY));
+            p.x = -1.0f + i * SPACING + SPACING / 2.0f;
+            p.y = -1.0f + j * SPACING + SPACING / 2.0f;
+            p.isFluid = isFluid;
+
+            particles.push_back(p);
         }
     }
 }

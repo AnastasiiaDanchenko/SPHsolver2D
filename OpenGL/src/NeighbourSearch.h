@@ -1,4 +1,4 @@
 #pragma once
-#include "GridInit.h"
+#include "CubicSplineKernel.h"
 
 void NeighbourSearch(const float radius);

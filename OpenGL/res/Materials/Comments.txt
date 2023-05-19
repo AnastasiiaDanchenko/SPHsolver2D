@@ -43,3 +43,10 @@ neigb search kernel = 2h + count particles on  borders or not  - contribution 0 
 
  kernel and kernel gradient 
  test: sum of kernel 1/h, 0 and 3d look on slides (sum(xi - xj) * kernel gradient)) = -1/h * I)
+
+ bouncing by viscosity
+ average density over time
+ global av density error - gives volume deviation
+ color particles 
+ visulaize velocities by colors
+ try to put particle off-center - should bounce along x axis

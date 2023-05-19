@@ -2,17 +2,12 @@
 #include <GLFW/glfw3.h>
 
 #include "CompileShaders.h"
-#include "NeighbourSearch.h"
-#include "CubicSplineKernel.h"
+#include "SimulationFalling.h"
 
 #include <string>
 
 const int WINDOW_WIDTH = 1000;
 const int WINDOW_HEIGHT = 800;
-
-const int GRID_SIZE = 10;
-const float SPACING = 2.0f / GRID_SIZE;
-const float SUPPORT = 2.1 * SPACING;
 
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (action == GLFW_PRESS || action == GLFW_REPEAT) {
@@ -49,13 +44,19 @@ int main() {
     // Initialize grid
     grid.resize(GRID_SIZE, std::vector<std::vector<Particle*>>(GRID_SIZE));
 
-    InitParticles(GRID_SIZE, SPACING);
+    //initialize boundary particles
+    InitParticles(GRID_WIDTH, GRID_HEIGHT, false);
 
-    UpdateGrid(GRID_SIZE);
-    RotateGrid(45.0f);
-    TranslateGrid(0.5f, 0.5f);
+    //initialize fluid particles
+    Particle p;
+    p.x = 0.0f;
+    p.y = 0.9f;
+    p.isFluid = true;
+    particles.push_back(p);
 
-    NeighbourSearch(SUPPORT);
+    UpdateGrid();
+    //RotateGrid(45.0f);
+    //TranslateGrid(0.5f, 0.5f);
 
     KernelTest(SPACING, GRID_SIZE);
 
@@ -66,7 +67,7 @@ int main() {
 
     // Main loop
     while (!glfwWindowShouldClose(window)) {
-        UpdateGrid(GRID_SIZE);
+        FallingSimulation(SUPPORT);
 
         glClear(GL_COLOR_BUFFER_BIT);
 
@@ -79,7 +80,6 @@ int main() {
         glEnd();
 
         glfwSwapBuffers(window);
-
         glfwPollEvents();
     }
 
