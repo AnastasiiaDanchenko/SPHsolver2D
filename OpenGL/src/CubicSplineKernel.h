@@ -3,7 +3,7 @@
 	#define M_PI 3.14159265358979323846
 #endif
 
-#include "GridInit.h"
+#include "Setup.h"
 
 float CubicSplineKernel(float r, const float radius);
 float CubicSplineKernelGradient(float r, const float radius);

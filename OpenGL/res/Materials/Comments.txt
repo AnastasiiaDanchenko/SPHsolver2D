@@ -49,4 +49,25 @@ neigb search kernel = 2h + count particles on  borders or not  - contribution 0 
  global av density error - gives volume deviation
  color particles 
  visulaize velocities by colors
+ if particle goes through the boundary - pressure acceleration is too small (i.e. increase stiffness)
  try to put particle off-center - should bounce along x axis
+ check parametres limits
+ try to init velocity for falling 
+ density is always small, untill reaching the boundary - then increases
+ same mass and rest density for all particles
+ don't update density for boundary particles, work with rest density - only for fluid use update
+ work with mass and density for each particle - not with volume
+ don't calculate pressure and density for boundary particles
+ use pressure mirroring for boundary particles (look slides)
+ ! no computations for boundary particles 
+ try 10x10 particles in a box
+ try to reduce viscosity as much as possible
+
+ for final simulation: place fluid in the corner of a box
+ fluid should splash and form waves
+ try to limit width of the box
+ then try to rotate the box & add boundaries in the middle of the box
+ 5x10 particle in a box or 10x5
+ for report - plot quantities over time
+ the snaller the stiffness - the bigger the time step
+ dear imgui - for visualization

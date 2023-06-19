@@ -35,14 +35,30 @@ void UpdateGrid() {
     }
 }
 
-void InitParticles(int width, int height, bool isFluid) {
+void InitParticles(int width, int height) {
     for (int i = 0; i < width; i++) {
         for (int j = 0; j < height; j++) {
             Particle p;
 
+            p.x = -0.8f + i * SPACING + SPACING / 2.0f;
+            p.y = -0.8f + j * SPACING + SPACING / 2.0f;
+
+            particles.push_back(p);
+        }
+    }
+}
+
+void InitBoundaries(int width, int height) {
+    for (int i = 0; i < width; i++) {
+        for (int j = 0; j < height; j++) {
+            if (i > 2 && i < 17 && j > 2) {
+                continue;
+            }
+            Particle p;
+
             p.x = -1.0f + i * SPACING + SPACING / 2.0f;
             p.y = -1.0f + j * SPACING + SPACING / 2.0f;
-            p.isFluid = isFluid;
+            p.isFluid = false;
 
             particles.push_back(p);
         }

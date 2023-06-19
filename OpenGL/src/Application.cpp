@@ -6,7 +6,7 @@
 
 #include <string>
 
-const int WINDOW_WIDTH = 1000;
+const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 800;
 
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -44,40 +44,49 @@ int main() {
     // Initialize grid
     grid.resize(GRID_SIZE, std::vector<std::vector<Particle*>>(GRID_SIZE));
 
-    //initialize boundary particles
-    InitParticles(GRID_WIDTH, GRID_HEIGHT, false);
+    Setup();
 
-    //initialize fluid particles
-    Particle p;
-    p.x = 0.0f;
-    p.y = 0.9f;
-    p.isFluid = true;
-    particles.push_back(p);
-
-    UpdateGrid();
-    //RotateGrid(45.0f);
-    //TranslateGrid(0.5f, 0.5f);
-
+    //NeighbourSearch(SUPPORT);
     KernelTest(SPACING, GRID_SIZE);
 
     ShaderProgramSource source = ParseShader("res/shaders/Particle.shader");
 
     unsigned int shader = CreateShader(source.VertexSource, source.FragmentSource, source.GeometrySource);
-    glUseProgram(shader);
+    //glUseProgram(shader);
 
     // Main loop
     while (!glfwWindowShouldClose(window)) {
-        FallingSimulation(SUPPORT);
+        FallingSimulation();
 
         glClear(GL_COLOR_BUFFER_BIT);
 
         // Render particles
-        glPointSize(5.0);
-        glBegin(GL_POINTS);
         for (const Particle& p : particles) {
-            glVertex2f(p.x, p.y);
+            glLoadIdentity();
+            glTranslatef(p.x, p.y, 0.0f);
+
+            if (p.isFluid) {
+                glColor3f(0.0f, 0.0f, 1.0f);
+            }
+            else {
+                glColor3f(0.6f, 0.3f, 0.0f);
+            }
+
+            const float radius = 0.02f;
+            const int numSegments = 10;
+            const float angleIncrement = 2 * M_PI / numSegments;
+
+            // Render filled circle
+            glBegin(GL_TRIANGLE_FAN);
+            glVertex2f(0.0f, 0.0f);  // Center of the circle
+            for (int i = 0; i <= numSegments; ++i) {
+                const float angle = i * angleIncrement;
+                const float x = radius * cos(angle);
+                const float y = radius * sin(angle);
+                glVertex2f(x, y);
+            }
+            glEnd();
         }
-        glEnd();
 
         glfwSwapBuffers(window);
         glfwPollEvents();

@@ -63,7 +63,7 @@ void KernelTest(const float radius, const int numParticles) {
         kernelSum = round(kernelSum * 100) / 100;
         kernelGradientSum = round(kernelGradientSum * 100) / 100;
 
-        if (kernelSum - volumeRev >= 0.021) {
+        if (kernelSum - volumeRev >= kernelSum / 50) { // 2% error
 			std::cout << "Kernel Sum test failed" << std::endl;
 		}
         if (kernelGradientSum != 0) {

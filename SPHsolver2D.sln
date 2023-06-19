@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL", "OpenGL\OpenGL.vcxproj", "{10945F30-90EE-408F-B19A-01F98C504A58}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SPHsolver2D", "SPHsolver2D\SPHsolver2D.vcxproj", "{65180964-BC1F-476A-88F1-FD17E38778BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{10945F30-90EE-408F-B19A-01F98C504A58}.Release|x64.Build.0 = Release|x64
 		{10945F30-90EE-408F-B19A-01F98C504A58}.Release|x86.ActiveCfg = Release|Win32
 		{10945F30-90EE-408F-B19A-01F98C504A58}.Release|x86.Build.0 = Release|Win32
+		{65180964-BC1F-476A-88F1-FD17E38778BC}.Debug|x64.ActiveCfg = Debug|x64
+		{65180964-BC1F-476A-88F1-FD17E38778BC}.Debug|x64.Build.0 = Debug|x64
+		{65180964-BC1F-476A-88F1-FD17E38778BC}.Debug|x86.ActiveCfg = Debug|Win32
+		{65180964-BC1F-476A-88F1-FD17E38778BC}.Debug|x86.Build.0 = Debug|Win32
+		{65180964-BC1F-476A-88F1-FD17E38778BC}.Release|x64.ActiveCfg = Release|x64
+		{65180964-BC1F-476A-88F1-FD17E38778BC}.Release|x64.Build.0 = Release|x64
+		{65180964-BC1F-476A-88F1-FD17E38778BC}.Release|x86.ActiveCfg = Release|Win32
+		{65180964-BC1F-476A-88F1-FD17E38778BC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

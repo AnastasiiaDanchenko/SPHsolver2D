@@ -13,8 +13,5 @@ void NeighbourSearch(const float radius) {
 				particles[i].neighbors.push_back(&particles[j]);
 			}
 		}
-
-		//std::cout << "Particle " << i << " has " << particles[i].neighbors.size() << " neighbors. "
-		//	<< "Position: (" << particles[i].x << ", " << particles[i].y << ")" << std::endl;
 	}
 }
