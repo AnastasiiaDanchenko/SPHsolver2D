@@ -1,6 +1,6 @@
 #pragma once
 #include "GridInit.h"
 
-const float DENSITY = .50f;
+const float DENSITY = .98f;
 
 void Setup();

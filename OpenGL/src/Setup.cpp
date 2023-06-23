@@ -3,7 +3,7 @@
 void Setup() {
     //initialize boundary particles
     InitBoundaries(GRID_WIDTH, GRID_HEIGHT);
-    InitParticles(10, 10);
+    InitParticles(5, 5);
 
     //initialize fluid particles
     /*particle p;
@@ -16,7 +16,7 @@ void Setup() {
     //TranslateGrid(0.5f, 0.5f);
 
 	for (int i = 0; i < particles.size(); i++) {
-        particles[i].mass = SPACING * SPACING / DENSITY; //2.1f; //SPACING * SPACING / DENSITY;
+        particles[i].mass = SPACING * SPACING / DENSITY;
         particles[i].density = DENSITY;
 	}
 }

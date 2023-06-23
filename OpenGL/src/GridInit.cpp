@@ -40,8 +40,8 @@ void InitParticles(int width, int height) {
         for (int j = 0; j < height; j++) {
             Particle p;
 
-            p.x = -0.8f + i * SPACING + SPACING / 2.0f;
-            p.y = -0.8f + j * SPACING + SPACING / 2.0f;
+            p.x = -0.72f + i * SPACING + SPACING / 2.0f;
+            p.y = -0.5f + j * SPACING + SPACING / 2.0f;
 
             particles.push_back(p);
         }
