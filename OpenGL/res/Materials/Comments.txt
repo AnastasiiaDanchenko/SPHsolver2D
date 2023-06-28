@@ -71,3 +71,24 @@ neigb search kernel = 2h + count particles on  borders or not  - contribution 0 
  for report - plot quantities over time
  the snaller the stiffness - the bigger the time step
  dear imgui - for visualization
+
+ av density over time - curve depends on dt and stiffness
+ k - bigger curve closer to rest density 
+ show relative density
+ av density over time from stiffness
+ increase k - > decrease dt (otherwise stability problems)
+ max timestep for different stiffness 
+
+ report structure:
+ 1. introduction (what and why : motivation; challenges: incomressibility analysis; explain all components of report - the task (the goal o this 
+ report/project); summary of the following chapters: in chapter 1 we discuss...)
+ 2. concepts (theory navier stokes + sph + sim steps)
+ 3. implementation details
+ 4. analysis
+ 5.conclusion (summary of the report, what was done, what was not done, what can be improved, what was learned)
+ in this chapter the goal is.. in section 1 we discuss.. in section 2 we present.. in section 3 we show.. in section 4 we conclude..
+ short summary of the chapter in the ends
+ eq 17 - navier stokes (SPHFluidsinComputerGraphics 2014)
+ for performance analysis (100/1000 particles - increase in computation time) - for more complicated simulation (add boundaries, more particles) 
+ neighbor search
+ references for 3d party implementations (both code and report)
