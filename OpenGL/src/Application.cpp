@@ -9,6 +9,7 @@
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 800;
 
+// Close the window when pressing ESC
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
     if (action == GLFW_PRESS || action == GLFW_REPEAT) {
         if (key == GLFW_KEY_ESCAPE) {
@@ -44,6 +45,7 @@ int main() {
     // Initialize grid
     grid.resize(GRID_SIZE, std::vector<std::vector<Particle*>>(GRID_SIZE));
 
+    // Initialize particles
     Setup();
 
     //NeighbourSearch(SUPPORT);
@@ -56,6 +58,7 @@ int main() {
 
     // Main loop
     while (!glfwWindowShouldClose(window)) {
+        // Update particles
         FallingSimulation();
 
         glClear(GL_COLOR_BUFFER_BIT);

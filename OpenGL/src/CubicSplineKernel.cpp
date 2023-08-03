@@ -3,6 +3,7 @@
 
 #include "CubicSplineKernel.h"
 
+// Compute cubic spline kernel function
 float CubicSplineKernel(float distance, const float radius) {
     float q = distance / radius;
     float result = 0.0f;
@@ -16,6 +17,7 @@ float CubicSplineKernel(float distance, const float radius) {
     return result;
 }
 
+// Compute cubic spline kernel gradient
 float CubicSplineKernelGradient(float distance, const float radius) {
 	float q = distance / radius;
 	float result = 0.0f;
@@ -29,6 +31,7 @@ float CubicSplineKernelGradient(float distance, const float radius) {
     return result;
 }
 
+// Test the kernel function and its gradient for uniformed grid of particles
 void KernelTest(const float radius, const int numParticles) {
     for (int i = 0; i < particles.size(); i++) {
         float kernelSum = 0.0f;

@@ -7,11 +7,13 @@
 
 #include "Particle.h"
 
+// Initialize grid size for simulation
 const int GRID_SIZE = 30;
 
 const int GRID_WIDTH = 20;
 const int GRID_HEIGHT = 15;
 
+// Initialize grid spacing
 const float SPACING = 2.0f / GRID_SIZE;
 const float SUPPORT = 2.1 * SPACING;
 

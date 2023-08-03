@@ -35,6 +35,7 @@ void UpdateGrid() {
     }
 }
 
+// Initialize uniformed grid of fluid particles
 void InitParticles(int width, int height) {
     for (int i = 0; i < width; i++) {
         for (int j = 0; j < height; j++) {
@@ -48,6 +49,7 @@ void InitParticles(int width, int height) {
     }
 }
 
+// Initialize boundaries
 void InitBoundaries(int width, int height) {
     for (int i = 0; i < width; i++) {
         for (int j = 0; j < height; j++) {
@@ -65,6 +67,7 @@ void InitBoundaries(int width, int height) {
     }
 }
 
+// Grid rotation for testing of the neighbor search
 void RotateGrid(float angle) {
     // Convert angle from degrees to radians
     float radians = angle * M_PI / 180.0f;
@@ -81,6 +84,7 @@ void RotateGrid(float angle) {
     }
 }
 
+// Grid translation for testing of the neighbor search
 void TranslateGrid(float x, float y) {
     for (int i = 0; i < particles.size(); i++) {
 		particles[i].x += x;

@@ -1,17 +1,10 @@
 #include "SimulationFalling.h"
 
 void FallingSimulation() {
-	float timestep = 0.0005f; //0.001 
-	//0.1 - no particle; 0.01 - unstable
-	//0.0001 - looses energy too slow
-
-	const float stiffness = 1000.0f; //270 or 2500
-	// <250 - pressure too small, collides with boundary
-	// 10000 - unstable, looses/gains energy; 25000 - gains energy
-
-	const float viscosity = .1f; //60
-	// 10 - bounces infinitely
-	// 6000 - gains 
+	// Choose the main parameters of the simulation
+	float timestep = 0.0005f;
+	const float stiffness = 1000.0f;
+	const float viscosity = .1f; 
 
 	NeighbourSearch(SUPPORT);
 	ComputeDensity();

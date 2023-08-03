@@ -1,7 +1,9 @@
 #include "Computations.h"
 
+// Loop through all particles and compute density
 void ComputeDensity() {
 	for (int i = 0; i < particles.size(); i++) {
+		// Skip boundary particles
 		if (particles[i].isFluid == false) {
 			continue;
 		}
@@ -20,21 +22,24 @@ void ComputeDensity() {
 	}
 }
 
+// Loop through all particles and compute pressure
 void ComputePressure(const float stiffness) {
 	for (int i = 0; i < particles.size(); i++) {
+		// Skip boundary particles
 		if (particles[i].isFluid == false) {
 			continue;
 		}
 		particles[i].pressure = std::max(0.0f, stiffness * (particles[i].density / DENSITY - 1));
-		//particles[i].pressure = stiffness * (particles[i].density / DENSITY - 1);
 		if (particles[i].pressure != 0 && i != 136) {
 			int a = 0;
 		}
 	}
 }
 
+// Loop through all particles and compute acceleration
 void ComputeAcceleration(const float viscosity) {
 	for (int i = 0; i < particles.size(); i++) {
+		// Skip boundary particles
 		if (particles[i].isFluid == false) {
 			continue;
 		}
@@ -47,6 +52,7 @@ void ComputeAcceleration(const float viscosity) {
 		float aGravity = -9.81f;
 		
 		for (int j = 0; j < particles[i].neighbors.size(); j++) {
+			// Compute distance between particles
 			float dX = particles[i].x - particles[i].neighbors[j]->x;
 			float dY = particles[i].y - particles[i].neighbors[j]->y;
 
@@ -57,6 +63,7 @@ void ComputeAcceleration(const float viscosity) {
 
 			float dV = std::sqrt(dVX * dVX + dVY * dVY);
 
+			// Compute acceleration
 			aViscosityX += particles[i].neighbors[j]->mass / particles[i].neighbors[j]->density *
 				dVX * dX / (dX * dX + 0.01 * SPACING * SPACING) * CubicSplineKernelGradient(distance, SPACING);
 
@@ -81,25 +88,16 @@ void ComputeAcceleration(const float viscosity) {
 						(particles[i].neighbors[j]->density * particles[i].neighbors[j]->density)) *
 						CubicSplineKernelGradient(distance, SPACING);
 				}
-				/*aPressureX += dX * particles[i].neighbors[j]->mass * (particles[i].pressure + particles[i].neighbors[j]->pressure) /
-					(2.0 * particles[i].neighbors[j]->density * particles[i].neighbors[j]->density * particles[i].density) *
-					CubicSplineKernelGradient(distance, SPACING);
-				aPressureY += dY * particles[i].neighbors[j]->mass * (particles[i].pressure + particles[i].neighbors[j]->pressure) /
-					(2.0 * particles[i].neighbors[j]->density * particles[i].neighbors[j]->density * particles[i].density) *
-					CubicSplineKernelGradient(distance, SPACING);*/
 			}
 		}
 
+		// Update acceleration
 		particles[i].ax = - 2 * viscosity * aViscosityX + aPressureX;
 		particles[i].ay = - 2 * viscosity * aViscosityY + aPressureY + aGravity;
-
-		/*if (i == 132) {
-			std::cout << "aPressureX: " << aPressureX << std::endl;
-			std::cout << "aViscosityX: " << aViscosityX << std::endl;
-		}*/
 	}
 }
 
+// Euler integration
 void UpdateParticles(const float dt) {
 	for (int i = 0; i < particles.size(); i++) {
 		if (particles[i].isFluid == false) {
@@ -109,27 +107,5 @@ void UpdateParticles(const float dt) {
 		particles[i].vy += particles[i].ay * dt;
 		particles[i].x += particles[i].vx * dt;
 		particles[i].y += particles[i].vy * dt;
-
-		// enforce boundary conditions
-		if (particles[i].x - SPACING < -.8f)
-		{
-			particles[i].vx *= BOUND_DAMPING;
-			//particles[i].x = SPACING;
-		}
-		if (particles[i].x + SPACING > 0.15f)
-		{
-			particles[i].vx *= BOUND_DAMPING;
-			//particles[i].x = 0.15f - SPACING;
-		}
-		if (particles[i].y - SPACING < -.8f)
-		{
-			particles[i].vy *= BOUND_DAMPING;
-			//particles[i].y = SPACING;
-		}
-		if (particles[i].y + SPACING > 1.f)
-		{
-			particles[i].vy *= BOUND_DAMPING;
-			//particles[i].y = 1.f - SPACING;
-		}
 	}
 }

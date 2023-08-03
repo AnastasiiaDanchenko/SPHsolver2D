@@ -160,9 +160,6 @@
     <ClInclude Include="src\Setup.h" />
     <ClInclude Include="src\SimulationFalling.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="res\Materials\Comments.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

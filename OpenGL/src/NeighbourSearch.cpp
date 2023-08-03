@@ -1,5 +1,6 @@
 #include "NeighbourSearch.h"
 
+// Neighbour search
 void NeighbourSearch(const float radius) {
 	for (int i = 0; i < particles.size(); i++) {
 		particles[i].neighbors.clear();
